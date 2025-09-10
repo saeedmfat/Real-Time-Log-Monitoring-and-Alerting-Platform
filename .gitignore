@@ -34,11 +34,11 @@ docker-compose.override.yml
 logs/
 
 # Terraform
-.terraform/
-*.tfstate
-*.tfstate.backup
-*.tfvars
-.terraform.lock.hcl
+#.terraform/
+#*.tfstate
+#*.tfstate.backup
+#*.tfvars
+#.terraform.lock.hcl
 
 # Security
 *.key
@@ -48,9 +48,9 @@ logs/
 secrets.ini
 
 # Monitoring data (should be ephemeral)
-monitoring/grafana/data/
-monitoring/prometheus/data/
-monitoring/loki/data/
+#monitoring/grafana/data/
+#monitoring/prometheus/data/
+#monitoring/loki/data/
 
 # Coverage and testing
 .coverage
