@@ -6,13 +6,17 @@ import os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from fastapi import FastAPI, Request
-from routes import router as users_router  # Import from the routes package
+from routes.users import router as users_router
 from utils.logger import get_logger
+from prometheus_fastapi_instrumentator import Instrumentator
 
 # Initialize logger
 logger = get_logger(__name__)
 
 app = FastAPI(title="User Management API", description="API for user management with structured logging", version="1.0.0")
+
+# Instrument the app with Prometheus metrics FIRST
+Instrumentator().instrument(app).expose(app)
 
 # Include routers
 app.include_router(users_router, prefix="/api/v1", tags=["users"])
